@@ -1,0 +1,38 @@
+{
+  "summary": "Verified OG/Twitter meta tag update from emergent.host to sanatolye.com.tr on preview HTML, /og-image.jpg accessibility, and homepage regression. All 4 requested checks pass.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verifications": {
+    "og_url": "https://sanatolye.com.tr/ ✓",
+    "og_image": "https://sanatolye.com.tr/og-image.jpg ✓",
+    "og_image_secure_url": "https://sanatolye.com.tr/og-image.jpg ✓",
+    "twitter_image": "https://sanatolye.com.tr/og-image.jpg ✓",
+    "og_type": "website ✓",
+    "og_title_contains_SANATOLYE": true,
+    "og_description": "present ✓",
+    "og_image_width": "1200 ✓",
+    "og_image_height": "630 ✓",
+    "twitter_card": "summary_large_image ✓",
+    "old_domain_harmony-portal-11.emergent.host_present_in_html": false,
+    "og_image_jpg_http_status": 200,
+    "og_image_jpg_content_type": "image/jpeg",
+    "og_image_jpg_content_length": 56934,
+    "title_contains_SANATOLYE": true,
+    "hero_visible": true,
+    "whatsapp_button_visible": true,
+    "critical_console_errors": "none"
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "OG tags intentionally point to production custom domain sanatolye.com.tr. Preview serves og-image.jpg at same path. Verified via curl + Playwright."
+}
