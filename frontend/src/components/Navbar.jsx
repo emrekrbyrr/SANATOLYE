@@ -35,8 +35,8 @@ export const Navbar = () => {
           className="flex items-center gap-3 group"
           data-testid="navbar-logo"
         >
-          <span className="grid place-items-center w-10 h-10 rounded-xl bg-ink group-hover:scale-105 transition-transform p-1.5">
-            <img src="/sanatolye_emblem.png" alt="SANATÖLYE" className="w-full h-full object-contain" />
+          <span className="grid place-items-center w-11 h-11 rounded-xl bg-ink group-hover:scale-105 transition-transform">
+            <img src="/sanatolye_emblem.png" alt="SANATÖLYE" className="h-7 w-auto object-contain" />
           </span>
           <span className="flex flex-col leading-none">
             <span className="font-display font-semibold text-xl tracking-[0.18em] text-ink">

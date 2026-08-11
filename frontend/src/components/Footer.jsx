@@ -12,8 +12,8 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
           <div className="max-w-xs">
             <div className="flex items-center gap-3">
-              <span className="grid place-items-center w-10 h-10 rounded-xl bg-ink p-1.5">
-                <img src="/sanatolye_emblem.png" alt="SANATÖLYE" className="w-full h-full object-contain" />
+              <span className="grid place-items-center w-11 h-11 rounded-xl bg-ink">
+                <img src="/sanatolye_emblem.png" alt="SANATÖLYE" className="h-7 w-auto object-contain" />
               </span>
               <span className="flex flex-col leading-none">
                 <span className="font-display font-semibold text-lg tracking-[0.18em] text-ink">SANATÖLYE</span>

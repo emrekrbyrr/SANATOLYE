@@ -9,6 +9,7 @@ import { WhyUs } from "@/components/WhyUs";
 import { Gallery } from "@/components/Gallery";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
       <Toaster position="bottom-right" richColors />
     </div>
   );
