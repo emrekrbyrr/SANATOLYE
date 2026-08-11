@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 44 60% 99%;
+        --foreground: 217 33% 17%;
+        --card: 0 0% 100%;
+        --card-foreground: 217 33% 17%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 217 33% 17%;
+        --primary: 200 98% 39%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 44 46% 94%;
+        --secondary-foreground: 217 33% 17%;
+        --muted: 44 46% 94%;
+        --muted-foreground: 215 16% 47%;
+        --accent: 45 93% 89%;
+        --accent-foreground: 217 33% 17%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 214 32% 91%;
+        --input: 214 32% 91%;
+        --ring: 200 98% 39%;
+        --radius: 1rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-cream text-ink font-sans antialiased;
+    }
+    ::selection {
+        background: #EAD9A8;
+        color: #141210;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+@layer utilities {
+    .line-mask {
+        overflow: hidden;
+        display: block;
+    }
+    .grain {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    }
+    .text-stroke {
+        -webkit-text-stroke: 1.5px #1E293B;
+        color: transparent;
+    }
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #F7F4EB; }
+::-webkit-scrollbar-thumb { background: #E4C97E; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #C8A24C; }
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit; margin-right: inherit; margin-top: inherit; margin-bottom: inherit;
+        padding-left: inherit; padding-right: inherit; padding-top: inherit; padding-bottom: inherit;
+        column-gap: inherit; row-gap: inherit; gap: inherit;
+        border-left-width: inherit; border-right-width: inherit; border-top-width: inherit; border-bottom-width: inherit;
+        border-left-style: inherit; border-right-style: inherit; border-top-style: inherit; border-bottom-style: inherit;
+        border-left-color: inherit; border-right-color: inherit; border-top-color: inherit; border-bottom-color: inherit;
+    }
+}

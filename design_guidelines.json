@@ -1,0 +1,116 @@
+{
+  "project_info": {
+    "title": "Aura Harmony - Çocuklar İçin Modern Müzik Okulu",
+    "app_type": "marketing_site",
+    "context": "A modern, warm, highly legible children's music school website in Turkish. Light color palette, expressive editorial typography, playful yet refined kinetic animations.",
+    "language": "Turkish (tr)"
+  },
+  "typography": {
+    "headline_font": "Outfit, Plus Jakarta Sans, sans-serif",
+    "body_font": "Plus Jakarta Sans, sans-serif",
+    "accent_font": "Caveat, cursive",
+    "font_pairings": "Outfit (Headings) + Plus Jakarta Sans (Body) + Caveat (Playful Hand-written Annotations)",
+    "scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-snug",
+      "h3": "text-xl sm:text-2xl font-semibold tracking-normal",
+      "h4": "text-lg sm:text-xl font-medium",
+      "body": "text-base sm:text-lg leading-relaxed text-slate-700",
+      "caption": "text-xs sm:text-sm uppercase tracking-widest font-semibold text-amber-600"
+    }
+  },
+  "colors": {
+    "archetype": "PASTEL & SOFT PLAYFUL EDITORIAL (Light Theme)",
+    "palette": {
+      "background_primary": "#FFFDF9",
+      "background_secondary": "#F7F4EB",
+      "background_accent": "#FEF3C7",
+      "card_bg": "#FFFFFF",
+      "text_primary": "#1E293B",
+      "text_muted": "#64748B",
+      "primary_brand": "#0284C7",
+      "primary_brand_hover": "#0369A1",
+      "accent_warm_yellow": "#F59E0B",
+      "accent_coral": "#F43F5E",
+      "accent_soft_green": "#10B981",
+      "accent_lavender": "#8B5CF6",
+      "border_light": "#E2E8F0",
+      "border_accent": "#FDE68A"
+    },
+    "gradient_usage": "Strictly light glass or subtle 5% radial highlights. No harsh full-screen tech gradients."
+  },
+  "layout_and_spacing": {
+    "container_padding": "px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto",
+    "section_spacing": "py-20 lg:py-32",
+    "hero_height": "min-h-[90vh] flex flex-col justify-center relative overflow-hidden",
+    "grid_system": "MODE A: TETRIS & BENTO MESH (Asymmetric, wide gap-8 to gap-12)"
+  },
+  "sections_breakdown": [
+    {
+      "id": "anasayfa",
+      "name": "Kinetic Hero",
+      "description": "Bold masked line-by-line reveal animation on load. Playful badge, warm children music background illustration or photo with low opacity overlay, floating animated musical notes micro-canvas, direct CTA to call/email."
+    },
+    {
+      "id": "marquee",
+      "name": "Editorial Marquee Ribbon",
+      "description": "Slow, organic running ribbon displaying school mottos: 'Notalarla Büyüyen Özgüven • Eğlenceli Solfej • Küçük Eller Dev Melodiler • Birebir Eğitici Yaklaşım'."
+    },
+    {
+      "id": "hakkimizda",
+      "name": "Hakkımızda & Manifesto Chapters",
+      "description": "4 numbered editorial manifesto chapters explaining school methodology: 01. Oyunla Müzik Algısı, 02. Bireysel İlgi & Ritim, 03. Sahne Özgüveni, 04. Sanatla Büyüyen Zeka."
+    },
+    {
+      "id": "dersler",
+      "name": "Dersler & Enstrümanlar",
+      "description": "Showcase of instrument classes (Piyano, Gitar, Keman, Bateri, Şan & Solfej, Orff Ritim Atölyesi) with age groups (4-6 yaş, 7-12 yaş, 13+ yaş), skills gained, interactive audio preview toggle simulation."
+    },
+    {
+      "id": "egitmenler",
+      "name": "Uzman Eğitmenlerimiz",
+      "description": "Interactive grid of warm teacher profiles with instrument specialization, conservatoire background, child psychology approach & quote."
+    },
+    {
+      "id": "galeri",
+      "name": "Okulumuzdan Anlar (Galeri)",
+      "description": "Interactive photo gallery mosaic with category filter (Sınıf İçi, Konser & Recital, Atölyeler, Neşeli Anlar)."
+    },
+    {
+      "id": "iletisim",
+      "name": "İletişim & Ulaşım",
+      "description": "Clear display of phone number (+90 532 000 00 00) and email (bilgi@muzikokulumuz.com) with one-click copy buttons, studio address, visiting hours, and transport info. NO forms needed as per user choice."
+    }
+  ],
+  "motion_and_interactions": {
+    "library": "framer-motion",
+    "hero_animation": "Masked line reveal with staggerChildren: 0.15s, drop-in badges, subtle float on floating icons",
+    "scroll_reveal": "Viewport enter animation (y: 30 to 0, opacity 0 to 1, transition 0.6s easeOut)",
+    "hover_effects": "Card lift hover (-translate-y-2), glow ring, scale-105 on teacher photos",
+    "micro_interactions": "Copy-to-clipboard toast notification via sonner, sound wave bar visualizer animation"
+  },
+  "image_urls": {
+    "hero_kids_piano": "https://images.unsplash.com/photo-1722166677110-f7043f6239c6?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "piano_lesson": "https://images.unsplash.com/photo-1696522732406-065ef560da8c?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "violin_lesson": "https://images.unsplash.com/photo-1587794032575-de0040fe9186?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "guitar_lesson": "https://images.unsplash.com/photo-1724967926462-3ed20f610e35?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "drums_lesson": "https://images.unsplash.com/photo-1678531730619-5c0cbb7735be?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "kids_group_music": "https://images.unsplash.com/photo-1502781252888-9143ba7f074e?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "teacher_female_1": "https://images.unsplash.com/photo-1585597647818-8984f3b4a8ca?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "teacher_male_1": "https://images.unsplash.com/photo-1642736468880-b6adf66bdd50?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "teacher_female_2": "https://images.unsplash.com/photo-1514960919797-5ff58c52e5ba?crop=entropy&cs=srgb&fm=jpg&q=85"
+  },
+  "instructions_to_main_agent": [
+    "Build the website using single-page navigation with smooth scrolling links to section IDs (#anasayfa, #hakkimizda, #dersler, #egitmenler, #galeri, #iletisim).",
+    "Keep header background semi-opaque with glassmorphism (backdrop-blur-md bg-white/85 border-b border-amber-100/60) with z-50.",
+    "Implement Turkish copy with high emotional warmth, tailored to parents wanting music education for their children.",
+    "Ensure every interactive button/link/card has a valid data-testid attribute in kebab-case format.",
+    "Use framer-motion for kinetic hero text reveal, lesson filter tabs, teacher modal/hover effect, and sonner for interactive quick-copy toast notifications.",
+    "Do not render any contact submission form. Provide rich direct action buttons (Copy Email, Copy Phone, Call Now, Send Email) with visual feedback."
+  ],
+  "testing_attributes": {
+    "navbar_links": "data-testid='nav-link-anasayfa', data-testid='nav-link-hakkimizda', data-testid='nav-link-dersler', data-testid='nav-link-egitmenler', data-testid='nav-link-galeri', data-testid='nav-link-iletisim'",
+    "ctas": "data-testid='hero-cta-contact', data-testid='copy-email-btn', data-testid='copy-phone-btn', data-testid='call-phone-btn'",
+    "filters": "data-testid='lesson-filter-all', data-testid='gallery-filter-all'"
+  }
+}
