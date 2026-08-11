@@ -134,8 +134,8 @@ export const Hero = () => {
         >
           <div className="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-2xl shadow-ink/10 border-4 border-white">
             <motion.img
-              src="https://images.unsplash.com/photo-1536221993589-9edbbca2c7fc?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200"
-              alt="Resim yapan çocuk"
+              src="https://images.unsplash.com/photo-1595762815172-843056adc7dc?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200"
+              alt="Bateri çalan çocuk"
               style={{ y: yImg, scale: scaleImg }}
               className="w-full h-full object-cover"
             />
