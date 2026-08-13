@@ -1,0 +1,37 @@
+{
+  "summary": "Verified OG/Twitter meta tag fix for WhatsApp preview. All 4 target fields (og:url, og:image, og:image:secure_url, twitter:image) now use canonical www host. External www og-image returns 200 image/jpeg without redirect; apex correctly 308-redirects to www. Preview page loads with correct <title>, Hero visible, WhatsApp floating button visible, no console errors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verification_results": {
+    "og:url": "https://www.sanatolye.com.tr/ ✓",
+    "og:image": "https://www.sanatolye.com.tr/og-image.jpg ✓",
+    "og:image:secure_url": "https://www.sanatolye.com.tr/og-image.jpg ✓",
+    "twitter:image": "https://www.sanatolye.com.tr/og-image.jpg ✓",
+    "og:type": "website ✓",
+    "og:title contains SANATÖLYE": true,
+    "og:image:width": "1200 ✓",
+    "og:image:height": "630 ✓",
+    "twitter:card": "summary_large_image ✓",
+    "apex_sanatolye.com.tr present in any of 4 fields": false,
+    "external www og-image.jpg": "HTTP/2 200, content-type: image/jpeg, no redirect ✓",
+    "external apex og-image.jpg": "HTTP/2 308 → https://www.sanatolye.com.tr/og-image.jpg ✓ (expected)",
+    "preview /og-image.jpg": "HTTP/2 200 image/jpeg ✓",
+    "preview <title>": "SANATÖLYE Sanat Akademisi | Müzik · Resim · Dans ✓",
+    "Hero visible": true,
+    "WhatsApp floating button visible": true,
+    "console_errors": "none"
+  },
+  "test_report_links": [],
+  "action_items": ["User must redeploy to production for the meta tag fix to reflect on live www.sanatolye.com.tr and for WhatsApp scraper to fetch the updated OG image."],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Static React CRA site. OG meta tags in public/index.html intentionally point to canonical production host www.sanatolye.com.tr (apex 308-redirects to www, which broke WhatsApp scraper). Fix confirmed in preview HTML. Live impact requires user redeploy."
+}
