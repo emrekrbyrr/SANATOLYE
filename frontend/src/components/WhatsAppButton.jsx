@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { SCHOOL } from "../data/content";
 
-const waNumber = SCHOOL.phoneHref.replace(/\D/g, "");
+const waNumber = SCHOOL.phoneHref.replace(/\D/g, "").replace(/^0/, "90");
 
 export const WhatsAppButton = () => {
   return (
