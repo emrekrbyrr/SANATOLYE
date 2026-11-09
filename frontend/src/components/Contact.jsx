@@ -99,10 +99,12 @@ export const Contact = () => {
                 <path id="stampCircle" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0" />
               </defs>
               <circle cx="60" cy="60" r="58" fill="#D9472B" />
-              <text fontFamily="Jost" fontSize="11.5" letterSpacing="3.4" fill="#F6EEE4">
-                <textPath href="#stampCircle">İLK DERS ÜCRETSİZ • İLK DERS ÜCRETSİZ •</textPath>
+              {/* textLength = circle circumference (2π·44 ≈ 276) so the text closes the ring exactly */}
+              <text fontFamily="Jost" fontSize="9.5" fontWeight="500" fill="#F6EEE4">
+                <textPath href="#stampCircle" textLength="274" lengthAdjust="spacing">
+                  ÜCRETSİZ DENEME DERSİ • ÜCRETSİZ DENEME DERSİ •
+                </textPath>
               </text>
-              <path d="M52 50 l8 -8 l8 8 M60 42 v34" stroke="#F6EEE4" strokeWidth="0" />
               <text x="60" y="68" textAnchor="middle" fontFamily="Caveat" fontSize="26" fill="#F6EEE4">♪✎</text>
             </svg>
 
