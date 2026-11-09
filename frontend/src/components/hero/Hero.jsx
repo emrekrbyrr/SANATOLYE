@@ -281,10 +281,10 @@ export const Hero = () => {
         <IntroStage />
         <div className="s-wordmark pointer-events-none absolute inset-0 grid place-items-center">
           <div className="text-center">
-            <span className="s-mark block font-mark text-[clamp(1.9rem,7.6vmin,6.4rem)] font-medium tracking-[0.12em] text-ink">
+            <span className="s-mark block font-mark text-[clamp(1.6rem,6vmin,5.4rem)] font-medium tracking-[0.12em] text-ink">
               SANATÖLYE
             </span>
-            <span className="s-sub mt-3 flex items-center justify-center gap-3 font-sans text-[clamp(.6rem,1.7vmin,1rem)] uppercase tracking-[0.42em] text-ink/70">
+            <span className="s-sub mt-3 flex items-center justify-center gap-3 font-sans text-[clamp(.62rem,1.9vmin,1.1rem)] uppercase tracking-[0.42em] text-ink/75">
               <span className="h-px w-8 bg-current" /> Sanat Akademisi <span className="h-px w-8 bg-current" />
             </span>
           </div>
@@ -391,12 +391,12 @@ function buildFilm(q, reveal, showStage) {
       ease: "power3.inOut",
     }, "s5")
     .to(sel(".s-enso"), { drawSVG: "100%", duration: 1, ease: "power2.inOut" }, "s5+=0.45")
-    .set(sel(".s-mark, .s-sub"), { autoAlpha: 1 }, "s5+=0.8")
+    .set(sel(".s-mark"), { autoAlpha: 1 }, "s5+=0.8")
     .from(markSplit.chars, { autoAlpha: 0, y: 30, rotateX: -60, duration: 0.7, stagger: 0.05, ease: "back.out(2)" }, "s5+=0.8")
-    .from(sel(".s-sub"), { autoAlpha: 0, letterSpacing: "0.9em", duration: 0.9, ease: "expo.out" }, "s5+=1.15");
+    .fromTo(sel(".s-sub"), { autoAlpha: 0, y: 12, letterSpacing: "0.9em" }, { autoAlpha: 1, y: 0, letterSpacing: "0.42em", duration: 0.9, ease: "expo.out" }, "s5+=1.15");
 
   /* Exit — the film dissolves into the page */
-  tl.addLabel("exit", "s5+=2.4")
+  tl.addLabel("exit", "s5+=3.0")
     .to(sel(".s-svg"), { scale: 1.12, autoAlpha: 0, duration: 0.8, ease: "power2.in" }, "exit")
     .to(sel(".s-wordmark"), { autoAlpha: 0, y: -30, duration: 0.6, ease: "power2.in" }, "exit")
     .to(sel(".s-skip"), { autoAlpha: 0, duration: 0.3 }, "exit")
