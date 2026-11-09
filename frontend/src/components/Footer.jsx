@@ -69,7 +69,7 @@ export const Footer = () => {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-ink/10 pt-6 text-sm text-ink-mute sm:flex-row">
           <p>© {year} SANATÖLYE Sanat Akademisi. Tüm hakları saklıdır.</p>
-          <p>{SCHOOL.website}</p>
+          <p>Silivri müzik ve resim kursu · {SCHOOL.website}</p>
         </div>
       </div>
     </footer>

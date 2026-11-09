@@ -317,8 +317,8 @@ export const ArtTour = () => {
           </div>
           <div className="lg:col-span-4">
             <p className="text-ink-soft" data-reveal>
-              Kaydırdıkça atölyemizi gezin: müzik stüdyosundan resim atölyesine. Her dersin
-              detayı için üzerine dokunun.
+              Silivri'deki atölyemizde çocuklar için müzik ve resim kursları. Kaydırdıkça gezin: müzik stüdyosundan
+              resim atölyesine. Her dersin detayı için üzerine dokunun.
             </p>
             <div className="mt-5 flex flex-wrap gap-2" data-reveal data-testid="lesson-filters">
               {[
