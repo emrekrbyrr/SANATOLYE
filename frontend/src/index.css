@@ -1,80 +1,122 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cinzel:wght@400;500;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..800,50;1,9..144,300..800,100&family=Jost:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-    :root {
-        --background: 44 60% 99%;
-        --foreground: 217 33% 17%;
-        --card: 0 0% 100%;
-        --card-foreground: 217 33% 17%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 217 33% 17%;
-        --primary: 200 98% 39%;
-        --primary-foreground: 0 0% 100%;
-        --secondary: 44 46% 94%;
-        --secondary-foreground: 217 33% 17%;
-        --muted: 44 46% 94%;
-        --muted-foreground: 215 16% 47%;
-        --accent: 45 93% 89%;
-        --accent-foreground: 217 33% 17%;
-        --destructive: 0 84% 60%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 214 32% 91%;
-        --input: 214 32% 91%;
-        --ring: 200 98% 39%;
-        --radius: 1rem;
-    }
-}
+  :root {
+    --background: 33 50% 93%;
+    --foreground: 25 20% 14%;
+    --border: 34 34% 83%;
+    --input: 34 34% 83%;
+    --ring: 10 70% 51%;
+    --radius: 1rem;
+    --paper: #F6EEE4;
+    --ink: #2B231D;
+    --nav-h: 76px;
+  }
 
-@layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-cream text-ink font-sans antialiased;
-    }
-    ::selection {
-        background: #EAD9A8;
-        color: #141210;
-    }
-    html {
-        scroll-behavior: smooth;
-    }
+  * { @apply border-line; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: var(--nav-h);
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: clip;
+  }
+
+  ::selection { background: #EE7B5F; color: #2B231D; }
+
+  :focus-visible {
+    outline: 2px solid #D9472B;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  img { -webkit-user-drag: none; }
 }
 
 @layer utilities {
-    .line-mask {
-        overflow: hidden;
-        display: block;
-    }
-    .grain {
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-    }
-    .text-stroke {
-        -webkit-text-stroke: 1.5px #1E293B;
-        color: transparent;
-    }
+  /* Paper grain overlay: one fixed layer for the whole page */
+  .paper-grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 70;
+    opacity: .28;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .3 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .eyebrow {
+    @apply font-sans uppercase font-medium text-[12px] sm:text-[13px];
+    letter-spacing: .32em;
+  }
+
+  .display-xl { font-size: clamp(2.6rem, 7.4vw, 7.2rem); line-height: .94; letter-spacing: -.025em; }
+  .display-lg { font-size: clamp(2.2rem, 5.2vw, 4.9rem); line-height: .98; letter-spacing: -.02em; }
+  .display-md { font-size: clamp(1.8rem, 3.4vw, 3.1rem); line-height: 1.04; letter-spacing: -.015em; }
+
+  .soft-italic { font-style: italic; font-variation-settings: "SOFT" 100, "WONK" 1; }
+
+  .wrap { @apply mx-auto w-full max-w-[1320px] px-4 sm:px-8 lg:px-14; }
+
+  /* Organic photo masks (responsive, via SVG data URIs) */
+  .mask-blob {
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M52 1C72 0 92 10 97 31c5 20 2 44-10 58-12 13-33 12-51 9C18 95 4 84 2 64 0 45 4 22 18 11 27 4 40 1 52 1Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M52 1C72 0 92 10 97 31c5 20 2 44-10 58-12 13-33 12-51 9C18 95 4 84 2 64 0 45 4 22 18 11 27 4 40 1 52 1Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  }
+  .mask-brush {
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M3 6 9 3l9 2 10-3 12 2 9-1 11 2 10-2 10 1 9-1 8 3-1 9 2 11-2 12 2 10-1 11 2 12-2 9 1 9-6 3-10-1-11 2-9-2-12 1-10-1-11 2-9-2-10 1-11-1-7-3 1-9-2-11 2-12-1-11 1-12-2-10Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M3 6 9 3l9 2 10-3 12 2 9-1 11 2 10-2 10 1 9-1 8 3-1 9 2 11-2 12 2 10-1 11 2 12-2 9 1 9-6 3-10-1-11 2-9-2-12 1-10-1-11 2-9-2-10 1-11-1-7-3 1-9-2-11 2-12-1-11 1-12-2-10Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  }
+  .mask-arch { border-radius: 999px 999px 18px 18px; }
+  .mask-oval { border-radius: 50%; }
+
+  .rough { filter: url(#rough); }
+  .rough-strong { filter: url(#roughStrong); }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
 }
 
-/* custom scrollbar */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #F7F4EB; }
-::-webkit-scrollbar-thumb { background: #E4C97E; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #C8A24C; }
+@media (max-width: 767px) {
+  /* SVG displacement filters are expensive on phones */
+  .rough, .rough-strong { filter: none; }
+}
 
-@layer base {
-    [data-debug-wrapper="true"] {
-        display: contents !important;
-    }
-    [data-debug-wrapper="true"] > * {
-        margin-left: inherit; margin-right: inherit; margin-top: inherit; margin-bottom: inherit;
-        padding-left: inherit; padding-right: inherit; padding-top: inherit; padding-bottom: inherit;
-        column-gap: inherit; row-gap: inherit; gap: inherit;
-        border-left-width: inherit; border-right-width: inherit; border-top-width: inherit; border-bottom-width: inherit;
-        border-left-style: inherit; border-right-style: inherit; border-top-style: inherit; border-bottom-style: inherit;
-        border-left-color: inherit; border-right-color: inherit; border-top-color: inherit; border-bottom-color: inherit;
-    }
+/* ---------- Intro state: hide chrome while the opening film plays ---------- */
+html[data-intro="playing"] .site-nav,
+html[data-intro="playing"] .site-float { opacity: 0; pointer-events: none; transform: translateY(-12px); }
+.site-nav, .site-float { transition: opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1); }
+
+/* ---------- Art tour: horizontal pinned track only on wide screens with motion ---------- */
+.tour-track { display: flex; flex-direction: column; }
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .tour-track { flex-direction: row; width: max-content; }
+  .tour-panel { width: 100vw; height: 100vh; height: 100svh; flex: none; }
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #F6EEE4; }
+::-webkit-scrollbar-thumb { background: #CDBBA4; border-radius: 10px; border: 2px solid #F6EEE4; }
+::-webkit-scrollbar-thumb:hover { background: #D9472B; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

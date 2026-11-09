@@ -1,8 +1,7 @@
 export const scrollToId = (id) => {
   const el = document.getElementById(id);
   if (!el) return;
-  const y = el.getBoundingClientRect().top + window.scrollY - 76;
-  window.scrollTo({ top: y, behavior: "smooth" });
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const y = el.getBoundingClientRect().top + window.scrollY - (id === "anasayfa" ? 0 : 70);
+  window.scrollTo({ top: Math.max(0, y), behavior: reduce ? "auto" : "smooth" });
 };
-
-export const useSmoothScroll = () => {};

@@ -1,10 +1,4 @@
 .App {
-    min-height: 100vh;
-    background-color: #FFFDF9;
-    overflow-x: hidden;
-}
-
-html, body {
-    overflow-x: hidden;
-    max-width: 100%;
+  min-height: 100vh;
+  background-color: #F6EEE4;
 }

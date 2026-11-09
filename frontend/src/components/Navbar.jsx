@@ -1,115 +1,165 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Phone } from "lucide-react";
 import { NAV, SCHOOL } from "../data/content";
 import { scrollToId } from "../hooks/useSmoothScroll";
+import { Logo } from "./art/Logo";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("anasayfa");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    NAV.forEach((n) => {
+      const el = document.getElementById(n.id);
+      if (el) io.observe(el);
+    });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      io.disconnect();
+    };
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   const go = (id) => {
     setOpen(false);
-    scrollToId(id);
+    requestAnimationFrame(() => scrollToId(id));
   };
 
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-cream/85 backdrop-blur-md border-b border-borderaccent/60 py-3" : "py-5"
+    <header
+      className={`site-nav fixed inset-x-0 top-0 z-50 transition-[background-color,padding,box-shadow] duration-500 ${
+        scrolled && !open ? "bg-paper/85 py-2.5 shadow-[0_1px_0_rgba(43,35,29,.08)] backdrop-blur-md" : "py-4"
       }`}
       data-testid="navbar"
     >
-      <div className="px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto flex items-center justify-between">
+      <div className="wrap flex items-center justify-between gap-4">
         <button
+          type="button"
           onClick={() => go("anasayfa")}
-          className="flex items-center gap-3 group"
+          className="relative z-[2] -ml-1 rounded-md px-1"
+          aria-label="SANATÖLYE — Anasayfa"
           data-testid="navbar-logo"
         >
-          <span className="grid place-items-center w-11 h-11 rounded-xl bg-ink group-hover:scale-105 transition-transform">
-            <img src="/sanatolye_emblem.png" alt="SANATÖLYE" className="h-7 w-auto object-contain" />
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-display font-semibold text-xl tracking-[0.18em] text-ink">
-              SANATÖLYE
-            </span>
-            <span className="text-[9px] tracking-[0.32em] font-semibold text-gold uppercase mt-0.5">
-              Sanat Akademisi
-            </span>
-          </span>
+          <Logo />
         </button>
 
-        <nav className="hidden lg:flex items-center gap-1">
-          {NAV.map((n) => (
+        <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Ana menü">
+          {NAV.slice(1).map((n) => (
             <button
               key={n.id}
+              type="button"
               onClick={() => go(n.id)}
-              className="px-4 py-2 rounded-full text-sm font-medium text-ink/70 hover:text-ink hover:bg-butter transition-colors"
+              className={`group relative px-3.5 py-2 text-[15px] transition-colors ${
+                active === n.id ? "text-ink" : "text-ink/60 hover:text-ink"
+              }`}
+              aria-current={active === n.id ? "true" : undefined}
               data-testid={`nav-link-${n.id}`}
             >
               {n.label}
+              <svg className="absolute inset-x-3 -bottom-0.5 h-2 w-[calc(100%-1.5rem)]" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true">
+                <path
+                  d="M2 5 C 30 1 70 7 98 3"
+                  fill="none"
+                  stroke="#D9472B"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  pathLength="1"
+                  strokeDasharray="1"
+                  className={`transition-[stroke-dashoffset] duration-500 ${
+                    active === n.id ? "[stroke-dashoffset:0]" : "[stroke-dashoffset:1] group-hover:[stroke-dashoffset:0]"
+                  }`}
+                />
+              </svg>
             </button>
           ))}
         </nav>
 
-        <a
-          href={`tel:${SCHOOL.phoneHref}`}
-          className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink text-cream text-sm font-semibold hover:bg-sky transition-colors"
-          data-testid="navbar-call-btn"
-        >
-          Hemen Ara
-        </a>
-
-        <button
-          className="lg:hidden grid place-items-center w-10 h-10 rounded-full bg-butter text-ink"
-          onClick={() => setOpen((o) => !o)}
-          data-testid="navbar-mobile-toggle"
-          aria-label="Menü"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="relative z-[2] flex items-center gap-2">
+          <a
+            href={`tel:${SCHOOL.phoneHref}`}
+            className="hidden items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-cad sm:inline-flex"
+            data-testid="navbar-call-btn"
+          >
+            <Phone size={15} /> Hemen Ara
+          </a>
+          <button
+            type="button"
+            className="grid h-11 w-11 place-items-center rounded-full border border-ink/15 bg-paper/70 xl:hidden"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
+            data-testid="navbar-mobile-toggle"
+          >
+            <span className="relative block h-3 w-5" aria-hidden="true">
+              <span className={`absolute left-0 h-[2px] w-5 rounded bg-ink transition-transform duration-300 ${open ? "top-[5px] rotate-45" : "top-0"}`} />
+              <span className={`absolute left-0 h-[2px] w-5 rounded bg-ink transition-transform duration-300 ${open ? "top-[5px] -rotate-45" : "top-[10px]"}`} />
+            </span>
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
         {open && (
           <motion.nav
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden overflow-hidden bg-cream border-t border-borderaccent/60"
+            id="mobile-menu"
+            initial={{ clipPath: "circle(0% at calc(100% - 40px) 40px)" }}
+            animate={{ clipPath: "circle(150% at calc(100% - 40px) 40px)" }}
+            exit={{ clipPath: "circle(0% at calc(100% - 40px) 40px)" }}
+            transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 z-[1] flex flex-col overflow-y-auto bg-paper px-6 pb-8 pt-28 xl:hidden"
+            aria-label="Mobil menü"
             data-testid="navbar-mobile-menu"
           >
-            <div className="px-6 py-4 flex flex-col gap-1">
-              {NAV.map((n) => (
-                <button
+            <svg className="pointer-events-none absolute -right-20 bottom-24 w-80 opacity-80" viewBox="-70 -70 140 140" aria-hidden="true">
+              <path d="M0-58C32-60 60-34 56 0 52 30 30 56-2 54-34 52-58 28-56-4-54-34-30-56 0-58Z" fill="#E3A33A" className="rough" />
+            </svg>
+            <ul className="relative flex flex-col">
+              {NAV.map((n, i) => (
+                <motion.li
                   key={n.id}
-                  onClick={() => go(n.id)}
-                  className="text-left px-4 py-3 rounded-xl font-medium text-ink/80 hover:bg-butter"
-                  data-testid={`nav-mobile-link-${n.id}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 + i * 0.05 }}
                 >
-                  {n.label}
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => go(n.id)}
+                    className="flex w-full items-baseline gap-4 border-b border-line py-3.5 text-left font-display text-[2rem] leading-tight text-ink"
+                    data-testid={`nav-mobile-link-${n.id}`}
+                  >
+                    <span className="font-sans text-xs text-ink/40">0{i + 1}</span>
+                    {n.label}
+                  </button>
+                </motion.li>
               ))}
-              <a
-                href={`tel:${SCHOOL.phoneHref}`}
-                className="mt-2 text-center px-4 py-3 rounded-xl bg-ink text-cream font-semibold"
-                data-testid="navbar-mobile-call-btn"
-              >
-                Hemen Ara
-              </a>
-            </div>
+            </ul>
+            <a
+              href={`tel:${SCHOOL.phoneHref}`}
+              className="relative mt-8 flex items-center justify-center gap-2 rounded-full bg-ink px-4 py-4 font-medium text-paper"
+              data-testid="navbar-mobile-call-btn"
+            >
+              <Phone size={17} /> Hemen Ara · {SCHOOL.phone}
+            </a>
           </motion.nav>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 };

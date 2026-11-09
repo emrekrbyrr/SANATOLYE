@@ -10,29 +10,19 @@ module.exports = {
       fontFamily: {
         display: ['Fraunces', 'Georgia', 'serif'],
         serif: ['Fraunces', 'Georgia', 'serif'],
-        sans: ['Plus Jakarta Sans', 'sans-serif'],
+        mark: ['Cinzel', 'Trajan Pro', 'Georgia', 'serif'],
+        sans: ['Jost', 'system-ui', 'sans-serif'],
         hand: ['Caveat', 'cursive'],
       },
       colors: {
-        cream: '#FFFDF9',
-        sand: '#F7F4EB',
-        butter: '#FBF3DC',
-        ink: '#141210',
-        gold: {
-          DEFAULT: '#C8A24C',
-          light: '#E4C97E',
-          dark: '#A8823A',
-        },
-        sky: {
-          DEFAULT: '#0284C7',
-          dark: '#0369A1',
-        },
-        sun: '#F59E0B',
-        coral: '#E5586E',
-        mint: '#3FAE8E',
-        lav: '#8B5CF6',
-        borderlight: '#EAE4D7',
-        borderaccent: '#EAD9A8',
+        paper: { DEFAULT: '#F6EEE4', deep: '#EEE2D2', light: '#FBF7F1' },
+        ink: { DEFAULT: '#2B231D', soft: '#4A4038', mute: '#7A6D61' },
+        cad: { DEFAULT: '#D9472B', light: '#EE7B5F', deep: '#A8321C' },
+        ultra: { DEFAULT: '#2A44B8', light: '#5C76E0', deep: '#16246B' },
+        rose: { DEFAULT: '#C93D78', light: '#E77DA8', deep: '#3A1630' },
+        ochre: { DEFAULT: '#E3A33A', light: '#F2C878', deep: '#B27A1C' },
+        sage: { DEFAULT: '#5D8A6B', light: '#9CC2A6' },
+        line: '#E3D6C4',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -87,14 +77,19 @@ module.exports = {
         },
         floaty: {
           '0%,100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-16px)' }
+          '50%': { transform: 'translateY(-14px)' }
+        },
+        bob: {
+          '0%,100%': { transform: 'translateY(0) rotate(var(--r,0deg))' },
+          '50%': { transform: 'translateY(-10px) rotate(var(--r,0deg))' }
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        marquee: 'marquee 28s linear infinite',
-        floaty: 'floaty 5s ease-in-out infinite'
+        marquee: 'marquee 38s linear infinite',
+        floaty: 'floaty 6s ease-in-out infinite',
+        bob: 'bob 7s ease-in-out infinite'
       }
     }
   },
