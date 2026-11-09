@@ -1,5 +1,6 @@
 import { Instagram, Mail, Phone, MapPin } from "lucide-react";
-import { SCHOOL, NAV, BRANCHES } from "../data/content";
+import { SCHOOL, NAV } from "../data/content";
+import { COURSES } from "../data/courses";
 import { scrollToId } from "../hooks/useSmoothScroll";
 import { Wobble } from "./art/Wobble";
 
@@ -46,10 +47,14 @@ export const Footer = () => {
             </ul>
           </nav>
           <div className="md:col-span-4">
-            <p className="eyebrow text-ink-mute">Sanat Dalları</p>
-            <ul className="mt-4 space-y-2 text-ink-soft">
-              {BRANCHES.map((b) => (
-                <li key={b.id}>{b.title}</li>
+            <p className="eyebrow text-ink-mute">Kurslarımız</p>
+            <ul className="mt-4 space-y-2">
+              {COURSES.map((c) => (
+                <li key={c.slug}>
+                  <a href={`/${c.slug}`} className="text-ink-soft transition-colors hover:text-cad" data-testid={`footer-course-${c.slug}`}>
+                    {c.h1}
+                  </a>
+                </li>
               ))}
             </ul>
             <p className="eyebrow mt-8 text-ink-mute">Adres</p>

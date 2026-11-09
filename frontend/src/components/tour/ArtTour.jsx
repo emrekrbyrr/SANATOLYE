@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { BRANCHES, LESSONS } from "../../data/content";
+import { COURSES } from "../../data/courses";
 import { gsap, useGsap } from "../../lib/gsap";
 import { scrollToId } from "../../hooks/useSmoothScroll";
 import { Wobble } from "../art/Wobble";
@@ -11,6 +12,7 @@ const byBranch = (b) => LESSONS.filter((l) => l.branch === b);
 
 /* ---------- shared bits ---------- */
 const LessonList = ({ branch, onOpen, tone = "dark" }) => (
+  <>
   <ul className="mt-7 flex flex-wrap gap-2.5">
     {byBranch(branch).map((l) => (
       <li key={l.id}>
@@ -30,6 +32,17 @@ const LessonList = ({ branch, onOpen, tone = "dark" }) => (
       </li>
     ))}
   </ul>
+  <p className={`mt-5 text-sm ${tone === "dark" ? "text-paper/60" : "text-ink-mute"}`}>
+    {COURSES.filter((c) => c.branch === branch).map((c, i, arr) => (
+      <span key={c.slug}>
+        <a href={`/${c.slug}`} className={`underline-offset-4 hover:underline ${tone === "dark" ? "hover:text-paper" : "hover:text-ink"}`}>
+          {c.h1}
+        </a>
+        {i < arr.length - 1 ? " · " : ""}
+      </span>
+    ))}
+  </p>
+  </>
 );
 
 const PanelHead = ({ b, tone }) => (

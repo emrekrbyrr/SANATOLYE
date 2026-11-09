@@ -37,7 +37,7 @@ export const Hero = () => {
   const forceFilm = useRef(false);
   // Decide once per mount (StrictMode runs effects twice in dev; the decision must not flip)
   const decision = useRef(null);
-  if (decision.current === null) decision.current = !readSeen() && !isBot();
+  if (decision.current === null) decision.current = !readSeen() && !isBot() && !window.location.hash;
 
   useGsap(
     root,

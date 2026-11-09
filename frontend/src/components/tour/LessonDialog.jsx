@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Phone, Check } from "lucide-react";
 import { SCHOOL, waLink } from "../../data/content";
+import { courseForLesson } from "../../data/courses";
 
 const ACCENT = { ultra: "#2A44B8", cad: "#D9472B", rose: "#C93D78" };
 
@@ -89,6 +90,15 @@ export const LessonDialog = ({ lesson, onClose }) => {
                   <Phone size={16} /> Ara
                 </a>
               </div>
+              {courseForLesson(lesson.id) && (
+                <a
+                  href={`/${courseForLesson(lesson.id).slug}`}
+                  className="mt-6 inline-flex items-center gap-1.5 border-b border-ink/30 pb-0.5 text-[15px] font-medium text-ink hover:border-cad hover:text-cad"
+                  data-testid="lesson-dialog-course-link"
+                >
+                  {courseForLesson(lesson.id).h1} sayfası →
+                </a>
+              )}
             </div>
             <button
               ref={closeRef}
